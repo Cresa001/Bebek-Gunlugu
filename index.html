@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>Bebek Günlüğüm</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --bg:#f7f5ff;
+    --card:#ffffff;
+    --text:#29263a;
+    --muted:#8b8799;
+    --primary:#8d7bea;
+    --primary2:#b7aaff;
+    --soft:#eeebff;
+    --danger:#ef6c78;
+    --green:#61b88a;
+    --border:#ece9f4;
+}
+
+body.dark{
+    --bg:#171624;
+    --card:#242233;
+    --text:#f5f2ff;
+    --muted:#aaa6bb;
+    --primary:#a99af4;
+    --primary2:#7668c8;
+    --soft:#332f4a;
+    --border:#383449;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+    min-height:100vh;
+    transition:.25s;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* TOP */
+
+.top{
+    padding:22px 18px 14px;
+    max-width:760px;
+    margin:auto;
+}
+
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.greeting{
+    font-size:12px;
+    font-weight:800;
+    color:var(--primary);
+    letter-spacing:.7px;
+}
+
+.title{
+    font-size:30px;
+    font-weight:900;
+    margin-top:4px;
+}
+
+.date{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
+}
+
+.theme{
+    width:43px;
+    height:43px;
+    border:0;
+    border-radius:15px;
+    background:var(--card);
+    box-shadow:0 6px 20px rgba(40,30,80,.08);
+    font-size:19px;
+}
+
+/* MAIN */
+
+.container{
+    max-width:760px;
+    margin:auto;
+    padding:0 15px 70px;
+}
+
+/* HERO */
+
+.hero{
+    margin-top:10px;
+    padding:22px;
+    border-radius:28px;
+    color:white;
+    background:
+        linear-gradient(
+            135deg,
+            #9483ed,
+            #b7a7ff
+        );
+    box-shadow:0 12px 30px rgba(110,90,210,.2);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"👶";
+    position:absolute;
+    right:15px;
+    bottom:-10px;
+    font-size:85px;
+    opacity:.18;
+}
+
+.hero-small{
+    font-size:12px;
+    opacity:.85;
+}
+
+.hero-title{
+    font-size:25px;
+    font-weight:900;
+    margin-top:5px;
+}
+
+.hero-text{
+    font-size:13px;
+    opacity:.9;
+    margin-top:7px;
+}
+
+.hero-progress{
+    height:7px;
+    border-radius:10px;
+    background:rgba(255,255,255,.25);
+    margin-top:18px;
+    overflow:hidden;
+}
+
+.hero-fill{
+    width:0;
+    height:100%;
+    background:white;
+    border-radius:10px;
+    transition:.4s;
+}
+
+/* QUICK */
+
+.quick{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.quick button{
+    border:0;
+    background:var(--card);
+    color:var(--text);
+    border-radius:19px;
+    padding:13px 4px;
+    box-shadow:0 6px 20px rgba(40,30,80,.05);
+}
+
+.quick-icon{
+    font-size:22px;
+}
+
+.quick-label{
+    display:block;
+    font-size:10px;
+    color:var(--muted);
+    margin-top:5px;
+}
+
+/* SECTION */
+
+.section{
+    margin-top:27px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:0 3px 12px;
+}
+
+.section-title{
+    font-size:20px;
+    font-weight:900;
+}
+
+.section-more{
+    font-size:12px;
+    color:var(--primary);
+    font-weight:800;
+}
+
+/* MONTHS */
+
+.month-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.month-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:23px;
+    padding:15px;
+    min-height:145px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(40,30,80,.045);
+}
+
+.month-card:after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:var(--soft);
+    right:-25px;
+    bottom:-25px;
+}
+
+.month-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.month-icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    background:var(--soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.month-heart{
+    border:0;
+    background:none;
+    font-size:18px;
+}
+
+.month-title{
+    font-weight:900;
+    margin-top:12px;
+}
+
+.month-sub{
+    font-size:11px;
+    color:var(--muted);
+    margin-top:3px;
+}
+
+.month-photo-count{
+    margin-top:13px;
+    font-size:11px;
+    color:var(--primary);
+    font-weight:800;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:5000;
+    background:var(--bg);
+    overflow:auto;
+}
+
+.modal.open{
+    display:block;
+}
+
+.modal-header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:var(--bg);
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid var(--border);
+}
+
+.back{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:13px;
+    background:var(--card);
+    color:var(--text);
+    font-size:21px;
+}
+
+.modal-heading{
+    font-size:19px;
+    font-weight:900;
+}
+
+.modal-content{
+    max-width:760px;
+    margin:auto;
+    padding:16px;
+}
+
+/* INFO */
+
+.info-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.info-title{
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.inputs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.input{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:var(--bg);
+    color:var(--text);
+    padding:11px;
+    outline:none;
+}
+
+/* PHOTOS */
+
+.photo-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.photo-count{
+    font-size:12px;
+    color:var(--muted);
+}
+
+.add{
+    border:0;
+    border-radius:13px;
+    background:var(--primary);
+    color:white;
+    padding:10px 13px;
+    font-weight:800;
+}
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+}
+
+.photo-item{
+    position:relative;
+    aspect-ratio:1;
+}
+
+.photo-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:15px;
+    display:block;
+}
+
+.photo-fav{
+    position:absolute;
+    top:5px;
+    left:5px;
+    width:28px;
+    height:28px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+}
+
+.photo-delete{
+    position:absolute;
+    top:5px;
+    right:5px;
+    width:29px;
+    height:29px;
+    border:0;
+    border-radius:50%;
+    background:rgba(0,0,0,.75);
+    color:white;
+    font-size:18px;
+}
+
+/* NOTE */
+
+.note{
+    width:100%;
+    min-height:110px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:var(--bg);
+    color:var(--text);
+    padding:12px;
+    outline:none;
+    resize:vertical;
+}
+
+/* FIRSTS */
+
+.first-grid{
+    display:grid;
+    gap:9px;
+}
+
+.first{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:14px;
+    display:flex;
+    gap:11px;
+    align-items:center;
+}
+
+.first-icon{
+    width:43px;
+    height:43px;
+    border-radius:14px;
+    background:var(--soft);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:21px;
+}
+
+.first-body{
+    flex:1;
+}
+
+.first-name{
+    font-size:13px;
+    font-weight:900;
+}
+
+.first input{
+    width:100%;
+    border:0;
+    border-bottom:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    padding:6px 0;
+    outline:none;
+    font-size:12px;
+}
+
+/* FULLSCREEN PHOTO */
+
+.viewer{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:rgba(0,0,0,.96);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.viewer.open{
+    display:flex;
+}
+
+.viewer-image{
+    max-width:94%;
+    max-height:75vh;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+.viewer-close{
+    position:fixed;
+    top:15px;
+    right:15px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:27px;
+}
+
+.viewer-actions{
+    display:flex;
+    gap:8px;
+    margin-top:18px;
+}
+
+.viewer-actions button{
+    border:0;
+    border-radius:25px;
+    padding:13px 17px;
+    color:white;
+    font-weight:800;
+}
+
+.viewer-save{
+    background:#5caf80;
+}
+
+.viewer-delete{
+    background:#eb6571;
+}
+
+.viewer-index{
+    color:white;
+    font-size:12px;
+    margin-top:9px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    z-index:20000;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:#272331;
+    color:white;
+    border-radius:25px;
+    padding:12px 18px;
+    font-size:13px;
+    opacity:0;
+    transition:.25s;
+    pointer-events:none;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+@media(max-width:420px){
+
+    .month-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .title{
+        font-size:27px;
+    }
+
+    .quick-label{
+        font-size:9px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+
+    <div class="top-row">
+
+        <div>
+
+            <div class="greeting">
+                BENİM KÜÇÜK HİKÂYEM
+            </div>
+
+            <div class="title">
+                Bebek Günlüğüm 👶
+            </div>
+
+            <div
+                class="date"
+                id="today">
+            </div>
+
+        </div>
+
+        <button
+            class="theme"
+            onclick="toggleTheme()">
+            🌙
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+    <div class="hero">
+
+        <div class="hero-small">
+            BÜYÜME YOLCULUĞU
+        </div>
+
+        <div
+            class="hero-title"
+            id="heroTitle">
+            İlk anılarımız başlıyor ✨
+        </div>
+
+        <div class="hero-text">
+            Her ayın en güzel anlarını
+            burada sakla.
+        </div>
+
+        <div class="hero-progress">
+            <div
+                class="hero-fill"
+                id="heroFill">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="quick">
+
+        <button onclick="showFirsts()">
+            <div class="quick-icon">⭐</div>
+            <span class="quick-label">
+                İlklerim
+            </span>
+        </button>
+
+        <button onclick="showFavorites()">
+            <div class="quick-icon">❤️</div>
+            <span class="quick-label">
+                Favoriler
+            </span>
+        </button>
+
+        <button onclick="showAllPhotos()">
+            <div class="quick-icon">📷</div>
+            <span class="quick-label">
+                Fotoğraflar
+            </span>
+        </button>
+
+        <button onclick="addMemory()">
+            <div class="quick-icon">✚</div>
+            <span class="quick-label">
+                Anı Ekle
+            </span>
+        </button>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-head">
+
+            <div class="section-title">
+                İlk 11 Ay 🌱
+            </div>
+
+            <div class="section-more">
+                1–11 Ay
+            </div>
+
+        </div>
+
+        <div
+            class="month-grid"
+            id="monthGrid">
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-head">
+
+            <div class="section-title">
+                Yaş Günlüğü 🎂
+            </div>
+
+            <div class="section-more">
+                1–4 Yaş
+            </div>
+
+        </div>
+
+        <div
+            class="month-grid"
+            id="yearGrid">
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-head">
+
+            <div class="section-title">
+                İlklerimiz ⭐
+            </div>
+
+        </div>
+
+        <div
+            class="first-grid"
+            id="firstGrid">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- DÖNEM DETAY -->
+
+<div
+    class="modal"
+    id="periodModal">
+
+    <div class="modal-header">
+
+        <button
+            class="back"
+            onclick="closePeriod()">
+            ‹
+        </button>
+
+        <div
+            class="modal-heading"
+            id="periodHeading">
+        </div>
+
+    </div>
+
+    <div class="modal-content">
+
+        <div class="info-card">
+
+            <div class="info-title">
+                📏 Bu Dönemin Gelişimi
+            </div>
+
+            <div class="inputs">
+
+                <input
+                    class="input"
+                    id="height"
+                    placeholder="Boy (cm)"
+                    type="number">
+
+                <input
+                    class="input"
+                    id="weight"
+                    placeholder="Kilo (kg)"
+                    type="number">
+
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="photo-toolbar">
+
+                <div class="photo-count"
+                     id="photoCount">
+                    0 / 10 fotoğraf
+                </div>
+
+                <label class="add">
+
+                    📷 Ekle
+
+                    <input
+                        type="file"
+                        id="photoInput"
+                        accept="image/*"
+                        multiple
+                        style="display:none">
+
+                </label>
+
+            </div>
+
+            <div
+                class="photo-grid"
+                id="detailPhotos">
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-title">
+                📝 Bu Dönemin Anısı
+            </div>
+
+            <textarea
+                class="note"
+                id="periodNote"
+                placeholder="Bu dönemde neler oldu? İlk kez ne yaptı? Seni en çok ne güldürdü?">
+            </textarea>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOTOĞRAF GÖRÜNTÜLEYİCİ -->
+
+<div
+    class="viewer"
+    id="viewer">
+
+    <button
+        class="viewer-close"
+        onclick="closeViewer()">
+        ×
+    </button>
+
+    <img
+        class="viewer-image"
+        id="viewerImage">
+
+    <div
+        class="viewer-index"
+        id="viewerIndex">
+    </div>
+
+    <div class="viewer-actions">
+
+        <button
+            class="viewer-save"
+            onclick="saveCurrentPhoto()">
+            ⬇️ Telefona Kaydet
+        </button>
+
+        <button
+            class="viewer-delete"
+            onclick="deleteCurrentPhoto()">
+            🗑️ Sil
+        </button>
+
+    </div>
+
+</div>
+
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   YENİ UYGULAMA VERİTABANI
+===================================================== */
+
+const DB_NAME =
+    "BebekGunlugum_2026";
+
+const DB_VERSION = 1;
+
+const STORE =
+    "baby_photos";
+
+let db;
+
+
+/* =====================================================
+   DÖNEMLER
+===================================================== */
+
+const periods=[];
+
+for(let i=1;i<=11;i++){
+
+    periods.push({
+
+        id:"m"+i,
+
+        title:i+". Ay",
+
+        subtitle:
+            i===1
+            ?"Dünyaya merhaba"
+            :"Büyümenin "+i+". ayı",
+
+        icon:"🌱"
+
+    });
+
+}
+
+for(let i=1;i<=4;i++){
+
+    periods.push({
+
+        id:"y"+i,
+
+        title:i+" Yaş",
+
+        subtitle:
+            "Büyüdüğümüz "+i+". yıl",
+
+        icon:"🎂"
+
+    });
+
+}
+
+
+/* =====================================================
+   DURUM
+===================================================== */
+
+let activePeriod=null;
+
+let viewerPhotos=[];
+
+let viewerIndex=0;
+
+let viewerObjectURL=null;
+
+
+/* =====================================================
+   DATABASE
+===================================================== */
+
+function openDatabase(){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const request =
+                indexedDB.open(
+                    DB_NAME,
+                    DB_VERSION
+                );
+
+            request.onupgradeneeded =
+                event=>{
+
+                    const database =
+                        event.target.result;
+
+                    if(
+                        !database.objectStoreNames
+                            .contains(STORE)
+                    ){
+
+                        database.createObjectStore(
+                            STORE,
+                            {
+                                keyPath:"id"
+                            }
+                        );
+
+                    }
+
+                };
+
+            request.onsuccess =
+                event=>{
+
+                    db =
+                        event.target.result;
+
+                    resolve();
+
+                };
+
+            request.onerror =
+                ()=>{
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   BENZERSİZ ID
+===================================================== */
+
+function uid(){
+
+    return(
+        Date.now().toString(36)+
+        Math.random()
+            .toString(36)
+            .slice(2)
+    );
+
+}
+
+
+/* =====================================================
+   FOTOĞRAF EKLE
+===================================================== */
+
+function putPhoto(
+    periodId,
+    blob
+){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readwrite"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE
+                );
+
+            const item={
+
+                id:uid(),
+
+                periodId:periodId,
+
+                blob:blob,
+
+                favorite:false,
+
+                created:Date.now()
+
+            };
+
+            const request =
+                store.add(item);
+
+            request.onsuccess =
+                ()=>resolve(item);
+
+            request.onerror =
+                ()=>reject(
+                    request.error
+                );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FOTOĞRAFLARI GETİR
+===================================================== */
+
+function getPhotos(
+    periodId=null
+){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readonly"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE
+                );
+
+            const request =
+                store.getAll();
+
+            request.onsuccess =
+                ()=>{
+
+                    let result =
+                        request.result;
+
+                    if(periodId){
+
+                        result =
+                            result.filter(
+                                p =>
+                                    p.periodId ===
+                                    periodId
+                            );
+
+                    }
+
+                    result.sort(
+                        (a,b)=>
+                            a.created-b.created
+                    );
+
+                    resolve(result);
+
+                };
+
+            request.onerror =
+                ()=>reject(
+                    request.error
+                );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FOTOĞRAF SİL — GERÇEK DELETE
+===================================================== */
+
+function deleteFromDatabase(id){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readwrite"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE
+                );
+
+            /*
+             * BURADA GERÇEKTEN
+             * VERİTABANINDAN SİLİNİYOR.
+             */
+
+            const request =
+                store.delete(id);
+
+            request.onsuccess =
+                ()=>resolve(true);
+
+            request.onerror =
+                ()=>reject(
+                    request.error
+                );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   FAVORİ
+===================================================== */
+
+function updateFavorite(
+    id,
+    value
+){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readwrite"
+                );
+
+            const store =
+                transaction.objectStore(
+                    STORE
+                );
+
+            const request =
+                store.get(id);
+
+            request.onsuccess =
+                ()=>{
+
+                    const item =
+                        request.result;
+
+                    if(!item){
+
+                        resolve();
+
+                        return;
+
+                    }
+
+                    item.favorite =
+                        value;
+
+                    store.put(item);
+
+                };
+
+            transaction.oncomplete =
+                ()=>resolve();
+
+            transaction.onerror =
+                ()=>reject(
+                    transaction.error
+                );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   LOCAL BİLGİLER
+===================================================== */
+
+function infoKey(
+    periodId,
+    name
+){
+
+    return(
+        "baby_"+periodId+"_"+name
+    );
+
+}
+
+
+/* =====================================================
+   KARTLARI OLUŞTUR
+===================================================== */
+
+function createPeriodCards(){
+
+    const monthGrid =
+        document.getElementById(
+            "monthGrid"
+        );
+
+    const yearGrid =
+        document.getElementById(
+            "yearGrid"
+        );
+
+    monthGrid.innerHTML="";
+    yearGrid.innerHTML="";
+
+
+    periods.forEach(
+        (period,index)=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "month-card";
+
+
+            card.onclick =
+                ()=>{
+                    openPeriod(
+                        period
+                    );
+                };
+
+
+            card.innerHTML=`
+
+                <div class="month-top">
+
+                    <div class="month-icon">
+                        ${period.icon}
+                    </div>
+
+                    <button
+                        class="month-heart"
+                        onclick="
+                            event.stopPropagation();
+                            showFavorites();
+                        ">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="month-title">
+                    ${period.title}
+                </div>
+
+                <div class="month-sub">
+                    ${period.subtitle}
+                </div>
+
+                <div
+                    class="month-photo-count"
+                    id="count-${period.id}">
+                    0 fotoğraf
+                </div>
+
+            `;
+
+
+            if(index<11){
+
+                monthGrid.appendChild(
+                    card
+                );
+
+            }else{
+
+                yearGrid.appendChild(
+                    card
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DÖNEM AÇ
+===================================================== */
+
+async function openPeriod(period){
+
+    activePeriod =
+        period;
+
+
+    document.getElementById(
+        "periodHeading"
+    ).textContent =
+        period.icon+
+        " "+
+        period.title;
+
+
+    document.getElementById(
+        "height"
+    ).value =
+        localStorage.getItem(
+            infoKey(
+                period.id,
+                "height"
+            )
+        ) || "";
+
+
+    document.getElementById(
+        "weight"
+    ).value =
+        localStorage.getItem(
+            infoKey(
+                period.id,
+                "weight"
+            )
+        ) || "";
+
+
+    document.getElementById(
+        "periodNote"
+    ).value =
+        localStorage.getItem(
+            infoKey(
+                period.id,
+                "note"
+            )
+        ) || "";
+
+
+    await renderDetailPhotos();
+
+
+    document.getElementById(
+        "periodModal"
+    ).classList.add(
+        "open"
+    );
+
+}
+
+
+/* =====================================================
+   DÖNEM KAPAT
+===================================================== */
+
+function closePeriod(){
+
+    savePeriodInfo();
+
+    document.getElementById(
+        "periodModal"
+    ).classList.remove(
+        "open"
+    );
+
+    activePeriod=null;
+
+    updateDashboard();
+
+}
+
+
+/* =====================================================
+   BİLGİLERİ KAYDET
+===================================================== */
+
+function savePeriodInfo(){
+
+    if(!activePeriod) return;
+
+    localStorage.setItem(
+        infoKey(
+            activePeriod.id,
+            "height"
+        ),
+        document.getElementById(
+            "height"
+        ).value
+    );
+
+    localStorage.setItem(
+        infoKey(
+            activePeriod.id,
+            "weight"
+        ),
+        document.getElementById(
+            "weight"
+        ).value
+    );
+
+    localStorage.setItem(
+        infoKey(
+            activePeriod.id,
+            "note"
+        ),
+        document.getElementById(
+            "periodNote"
+        ).value
+    );
+
+}
+
+
+/* =====================================================
+   FOTOĞRAF EKLEME
+===================================================== */
+
+document.getElementById(
+    "photoInput"
+).addEventListener(
+    "change",
+    async function(){
+
+        if(!activePeriod){
+
+            return;
+
+        }
+
+        const files =
+            Array.from(
+                this.files
+            );
+
+        this.value="";
+
+
+        if(!files.length){
+
+            return;
+
+        }
+
+
+        const existing =
+            await getPhotos(
+                activePeriod.id
+            );
+
+
+        const remaining =
+            10-existing.length;
+
+
+        if(remaining<=0){
+
+            toast(
+                "Bu dönemde 10 fotoğraf hakkı doldu."
+            );
+
+            return;
+
+        }
+
+
+        const selected =
+            files.slice(
+                0,
+                remaining
+            );
+
+
+        for(
+            const file of selected
+        ){
+
+            if(
+                !file.type.startsWith(
+                    "image/"
+                )
+            ){
+
+                continue;
+
+            }
+
+
+            /*
+             * Blob doğrudan IndexedDB'ye.
+             */
+
+            await putPhoto(
+                activePeriod.id,
+                file
+            );
+
+        }
+
+
+        await renderDetailPhotos();
+
+        await updateDashboard();
+
+
+        toast(
+            selected.length+
+            " fotoğraf eklendi ❤️"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   DETAY FOTOĞRAFLARI
+===================================================== */
+
+async function renderDetailPhotos(){
+
+    if(!activePeriod) return;
+
+
+    const grid =
+        document.getElementById(
+            "detailPhotos"
+        );
+
+
+    const count =
+        document.getElementById(
+            "photoCount"
+        );
+
+
+    const list =
+        await getPhotos(
+            activePeriod.id
+        );
+
+
+    grid.innerHTML="";
+
+
+    count.textContent =
+        list.length+
+        " / 10 fotoğraf";
+
+
+    list.forEach(
+        photo=>{
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "photo-item";
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            const url =
+                URL.createObjectURL(
+                    photo.blob
+                );
+
+
+            img.src=url;
+
+
+            img.onclick =
+                ()=>{
+                    openViewer(
+                        photo.id
+                    );
+                };
+
+
+            const fav =
+                document.createElement(
+                    "button"
+                );
+
+            fav.className =
+                "photo-fav";
+
+            fav.textContent =
+                photo.favorite
+                ?"❤️"
+                :"♡";
+
+
+            fav.onclick =
+                async event=>{
+
+                    event.stopPropagation();
+
+                    await updateFavorite(
+                        photo.id,
+                        !photo.favorite
+                    );
+
+                    await renderDetailPhotos();
+
+                };
+
+
+            const del =
+                document.createElement(
+                    "button"
+                );
+
+            del.className =
+                "photo-delete";
+
+            del.textContent="×";
+
+
+            del.onclick =
+                async event=>{
+
+                    event.stopPropagation();
+
+                    await deletePhoto(
+                        photo.id
+                    );
+
+                };
+
+
+            box.appendChild(img);
+
+            box.appendChild(fav);
+
+            box.appendChild(del);
+
+            grid.appendChild(box);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SİL
+===================================================== */
+
+async function deletePhoto(id){
+
+    const ok =
+        confirm(
+            "Bu fotoğraf kalıcı olarak silinsin mi?"
+        );
+
+
+    if(!ok){
+
+        return;
+
+    }
+
+
+    try{
+
+        /*
+         * GERÇEK VERİTABANI SİLME.
+         */
+
+        await deleteFromDatabase(
+            id
+        );
+
+
+        /*
+         * EKRANI YENİLE.
+         */
+
+        await renderDetailPhotos();
+
+        await updateDashboard();
+
+
+        /*
+         * Viewer açıksa kapat.
+         */
+
+        if(
+            document
+                .getElementById("viewer")
+                .classList
+                .contains("open")
+        ){
+
+            closeViewer();
+
+        }
+
+
+        toast(
+            "Fotoğraf kalıcı olarak silindi 🗑️"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Silme işlemi başarısız oldu."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FOTOĞRAF VIEWER
+===================================================== */
+
+async function openViewer(id){
+
+    viewerPhotos =
+        await getPhotos(
+            activePeriod
+                ?activePeriod.id
+                :null
+        );
+
+
+    viewerIndex =
+        viewerPhotos.findIndex(
+            p =>
+                p.id===id
+        );
+
+
+    if(viewerIndex<0){
+
+        return;
+
+    }
+
+
+    showViewerPhoto();
+
+}
+
+
+function showViewerPhoto(){
+
+    if(
+        !viewerPhotos.length
+    ){
+
+        return;
+
+    }
+
+
+    const photo =
+        viewerPhotos[
+            viewerIndex
+        ];
+
+
+    if(viewerObjectURL){
+
+        URL.revokeObjectURL(
+            viewerObjectURL
+        );
+
+    }
+
+
+    viewerObjectURL =
+        URL.createObjectURL(
+            photo.blob
+        );
+
+
+    document.getElementById(
+        "viewerImage"
+    ).src =
+        viewerObjectURL;
+
+
+    document.getElementById(
+        "viewerIndex"
+    ).textContent =
+        (viewerIndex+1)+
+        " / "+
+        viewerPhotos.length;
+
+
+    document.getElementById(
+        "viewer"
+    ).classList.add(
+        "open"
+    );
+
+}
+
+
+/* =====================================================
+   VIEWER'DAN SİL
+===================================================== */
+
+async function deleteCurrentPhoto(){
+
+    if(!viewerPhotos.length){
+
+        return;
+
+    }
+
+
+    const photo =
+        viewerPhotos[
+            viewerIndex
+        ];
+
+
+    const ok =
+        confirm(
+            "Bu fotoğraf kalıcı olarak silinsin mi?"
+        );
+
+
+    if(!ok){
+
+        return;
+
+    }
+
+
+    await deleteFromDatabase(
+        photo.id
+    );
+
+
+    /*
+     * Listeyi tekrar veritabanından çekiyoruz.
+     */
+
+    viewerPhotos =
+        await getPhotos(
+            activePeriod
+                ?activePeriod.id
+                :null
+        );
+
+
+    if(
+        viewerPhotos.length===0
+    ){
+
+        closeViewer();
+
+    }else{
+
+        if(
+            viewerIndex >=
+            viewerPhotos.length
+        ){
+
+            viewerIndex =
+                viewerPhotos.length-1;
+
+        }
+
+        showViewerPhoto();
+
+    }
+
+
+    await renderDetailPhotos();
+
+    await updateDashboard();
+
+
+    toast(
+        "Fotoğraf silindi 🗑️"
+    );
+
+}
+
+
+/* =====================================================
+   FOTOĞRAF KAYDET
+===================================================== */
+
+async function saveCurrentPhoto(){
+
+    if(!viewerPhotos.length){
+
+        return;
+
+    }
+
+
+    const photo =
+        viewerPhotos[
+            viewerIndex
+        ];
+
+
+    const blob =
+        photo.blob;
+
+
+    const file =
+        new File(
+            [blob],
+            "bebek-anisi.jpg",
+            {
+                type:
+                    blob.type ||
+                    "image/jpeg"
+            }
+        );
+
+
+    try{
+
+        if(
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files:[file]
+            })
+        ){
+
+            await navigator.share({
+
+                files:[file],
+
+                title:
+                    "Bebek Günlüğüm"
+
+            });
+
+            return;
+
+        }
+
+
+        const url =
+            URL.createObjectURL(
+                blob
+            );
+
+
+        const a =
+            document.createElement(
+                "a"
+            );
+
+        a.href=url;
+
+        a.download=
+            "bebek-anisi.jpg";
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        a.remove();
+
+
+        setTimeout(
+            ()=>{
+                URL.revokeObjectURL(
+                    url
+                );
+            },
+            1000
+        );
+
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+
+/* =====================================================
+   VIEWER KAPAT
+===================================================== */
+
+function closeViewer(){
+
+    document.getElementById(
+        "viewer"
+    ).classList.remove(
+        "open"
+    );
+
+
+    if(viewerObjectURL){
+
+        URL.revokeObjectURL(
+            viewerObjectURL
+        );
+
+        viewerObjectURL=null;
+
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function updateDashboard(){
+
+    const all =
+        await getPhotos();
+
+
+    let completed=0;
+
+
+    for(
+        const period of periods
+    ){
+
+        const count =
+            all.filter(
+                p =>
+                    p.periodId===
+                    period.id
+            ).length;
+
+
+        const counter =
+            document.getElementById(
+                "count-"+period.id
+            );
+
+
+        if(counter){
+
+            counter.textContent =
+                count+
+                " fotoğraf";
+
+        }
+
+
+        if(count>0){
+
+            completed++;
+
+        }
+
+    }
+
+
+    const percent =
+        completed/
+        periods.length*
+        100;
+
+
+    document.getElementById(
+        "heroFill"
+    ).style.width =
+        percent+"%";
+
+
+    if(completed===0){
+
+        document.getElementById(
+            "heroTitle"
+        ).textContent =
+            "İlk anılarımız başlıyor ✨";
+
+    }else{
+
+        document.getElementById(
+            "heroTitle"
+        ).textContent =
+            completed+
+            " dönemimizde anı birikti ❤️";
+
+    }
+
+}
+
+
+/* =====================================================
+   İLKLER
+===================================================== */
+
+const firsts=[
+
+    ["😊","İlk Gülüş","first_smile"],
+
+    ["🦷","İlk Diş","first_tooth"],
+
+    ["🗣️","İlk Kelime","first_word"],
+
+    ["👣","İlk Adım","first_step"],
+
+    ["🍰","İlk Doğum Günü","first_birthday"],
+
+    ["✈️","İlk Yolculuk","first_trip"]
+
+];
+
+
+function renderFirsts(){
+
+    const container =
+        document.getElementById(
+            "firstGrid"
+        );
+
+
+    container.innerHTML="";
+
+
+    firsts.forEach(
+        item=>{
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className="first";
+
+
+            div.innerHTML=`
+
+                <div class="first-icon">
+                    ${item[0]}
+                </div>
+
+                <div class="first-body">
+
+                    <div class="first-name">
+                        ${item[1]}
+                    </div>
+
+                    <input
+                        value="${
+                            localStorage.getItem(
+                                item[2]
+                            ) || ""
+                        }"
+                        placeholder="Tarih veya anı..."
+                        onchange="
+                            localStorage.setItem(
+                                '${item[2]}',
+                                this.value
+                            )
+                        ">
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   İLKLERİ GÖSTER
+===================================================== */
+
+function showFirsts(){
+
+    document.getElementById(
+        "firstGrid"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   FAVORİLER
+===================================================== */
+
+async function showFavorites(){
+
+    const all =
+        await getPhotos();
+
+
+    const favorites =
+        all.filter(
+            p =>
+                p.favorite
+        );
+
+
+    if(!favorites.length){
+
+        toast(
+            "Henüz favori fotoğraf yok ❤️"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * İlk favoriyi viewer'da aç.
+     */
+
+    viewerPhotos =
+        favorites;
+
+    viewerIndex=0;
+
+    showViewerPhoto();
+
+}
+
+
+/* =====================================================
+   TÜM FOTOĞRAFLAR
+===================================================== */
+
+async function showAllPhotos(){
+
+    const all =
+        await getPhotos();
+
+
+    if(!all.length){
+
+        toast(
+            "Henüz fotoğraf eklenmedi."
+        );
+
+        return;
+
+    }
+
+
+    viewerPhotos =
+        all;
+
+    viewerIndex=0;
+
+    showViewerPhoto();
+
+}
+
+
+/* =====================================================
+   ANİ EKLE
+===================================================== */
+
+function addMemory(){
+
+    const index =
+        periods.findIndex(
+            p =>
+                true
+        );
+
+
+    if(index>=0){
+
+        openPeriod(
+            periods[index]
+        );
+
+        setTimeout(
+            ()=>{
+                document
+                    .getElementById(
+                        "periodNote"
+                    )
+                    .focus();
+            },
+            200
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    localStorage.setItem(
+        "baby_theme",
+        document.body.classList.contains(
+            "dark"
+        )
+        ?"dark"
+        :"light"
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+function toast(message){
+
+    const element =
+        document.getElementById(
+            "toast"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    element.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            ()=>{
+                element.classList.remove(
+                    "show"
+                );
+            },
+            2200
+        );
+
+}
+
+
+/* =====================================================
+   TARİH
+===================================================== */
+
+function setDate(){
+
+    const now =
+        new Date();
+
+
+    document.getElementById(
+        "today"
+    ).textContent =
+        now.toLocaleDateString(
+            "tr-TR",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+}
+
+
+/* =====================================================
+   BAŞLAT
+===================================================== */
+
+async function start(){
+
+    setDate();
+
+    createPeriodCards();
+
+    renderFirsts();
+
+
+    if(
+        localStorage.getItem(
+            "baby_theme"
+        )==="dark"
+    ){
+
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+
+    try{
+
+        await openDatabase();
+
+        await updateDashboard();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Uygulamanın fotoğraf sistemi başlatılamadı."
+        );
+
+    }
+
+}
+
+
+start();
+
+
+/* =====================================================
+   KLAVYE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(
+            event.key==="Escape"
+        ){
+
+            closeViewer();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
