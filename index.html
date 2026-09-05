@@ -2,487 +2,304 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fff5f8">
-<title>Minik Mucizem</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Web Erişilebilirlik Tarayıcısı</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-:root{
-    --pink:#ff6f91;
-    --pink2:#ff9db3;
-    --purple:#9b7bff;
-    --text:#302536;
-    --muted:#857a87;
-    --card:rgba(255,255,255,.78);
-    --border:rgba(255,255,255,.8);
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
     min-height:100vh;
     background:
-        radial-gradient(circle at 10% 10%,rgba(255,160,190,.35),transparent 28%),
-        radial-gradient(circle at 90% 15%,rgba(168,145,255,.28),transparent 30%),
-        linear-gradient(145deg,#fff8fb,#f8f4ff 50%,#fff);
-    overflow-x:hidden;
-}
-
-body:before{
-    content:"";
-    position:fixed;
-    width:420px;
-    height:420px;
-    background:rgba(255,190,210,.16);
-    filter:blur(80px);
-    border-radius:50%;
-    top:-130px;
-    left:-150px;
-    z-index:-1;
+      radial-gradient(circle at 10% 10%,rgba(0,255,180,.12),transparent 30%),
+      radial-gradient(circle at 90% 20%,rgba(80,100,255,.15),transparent 30%),
+      #070b13;
+    color:#eef3ff;
 }
 
 .container{
-    width:min(1050px,94%);
-    margin:auto;
-    padding:25px 0 50px;
+    width:min(1400px,94%);
+    margin:35px auto;
 }
-
-/* HEADER */
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:22px;
+    gap:20px;
+    padding:25px;
+    border:1px solid #202b3e;
+    background:rgba(13,19,31,.82);
+    backdrop-filter:blur(18px);
+    border-radius:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
 }
 
 .logoIcon{
-    width:48px;
-    height:48px;
-    border-radius:17px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    border-radius:15px;
+    background:linear-gradient(135deg,#00e5a0,#3d6cff);
     font-size:25px;
-    background:linear-gradient(135deg,#ff8fab,#b394ff);
-    box-shadow:0 10px 25px rgba(255,111,145,.25);
 }
 
 .logo h1{
     font-size:21px;
-    font-weight:800;
 }
 
-.logo span{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-top:2px;
+.logo p{
+    color:#8995aa;
+    margin-top:4px;
+    font-size:13px;
 }
 
-/* SETUP */
-
-.setup{
-    background:var(--card);
-    backdrop-filter:blur(20px);
-    border:1px solid var(--border);
-    border-radius:28px;
-    padding:24px;
-    box-shadow:0 18px 45px rgba(70,40,70,.08);
-    margin-bottom:18px;
-}
-
-.setupHeader{
+.status{
     display:flex;
     align-items:center;
-    gap:12px;
-    margin-bottom:18px;
+    gap:8px;
+    color:#7d8ba2;
+    font-size:13px;
 }
 
-.setupHeader .emoji{
-    font-size:28px;
+.dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#00d991;
+    box-shadow:0 0 12px #00d991;
 }
 
-.setupHeader h2{
-    font-size:18px;
-}
-
-.setupHeader p{
-    font-size:12px;
-    color:var(--muted);
-    margin-top:3px;
-}
-
-.formGrid{
+.controls{
+    margin-top:22px;
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr 1fr auto;
     gap:14px;
 }
 
-.field label{
-    display:block;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:7px;
-    color:#675d69;
+.card{
+    border:1px solid #202b3e;
+    background:rgba(13,19,31,.82);
+    border-radius:18px;
+    padding:18px;
 }
 
-input{
+.card label{
+    display:block;
+    color:#8793a9;
+    font-size:12px;
+    margin-bottom:9px;
+}
+
+select,input{
     width:100%;
-    border:1px solid #eee4ea;
-    background:rgba(255,255,255,.9);
-    border-radius:14px;
-    padding:13px;
-    font-size:14px;
-    color:var(--text);
+    border:1px solid #29364c;
     outline:none;
+    color:white;
+    background:#0b111c;
+    padding:12px 13px;
+    border-radius:11px;
+}
+
+select:focus,input:focus{
+    border-color:#3d6cff;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    border-radius:12px;
+    padding:12px 18px;
+    font-weight:700;
+    color:white;
     transition:.2s;
 }
 
-input:focus{
-    border-color:#ff9bb1;
-    box-shadow:0 0 0 4px rgba(255,111,145,.09);
+button:hover{
+    transform:translateY(-1px);
 }
 
-.saveBtn{
-    margin-top:15px;
-    border:0;
-    width:100%;
-    padding:14px;
-    border-radius:15px;
-    color:white;
-    font-weight:800;
-    font-size:14px;
-    cursor:pointer;
-    background:linear-gradient(135deg,#ff6f91,#a47cff);
-    box-shadow:0 10px 22px rgba(255,111,145,.2);
+.start{
+    background:linear-gradient(135deg,#00c98a,#087cff);
+    min-width:190px;
+    align-self:end;
 }
 
-/* MAIN HERO */
+.stop{
+    background:#202b3e;
+    display:none;
+}
 
-.hero{
-    position:relative;
+.stats{
+    margin-top:22px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+}
+
+.stat{
+    padding:19px;
+    border:1px solid #202b3e;
+    background:rgba(13,19,31,.82);
+    border-radius:17px;
+}
+
+.stat small{
+    color:#7e8aa0;
+}
+
+.stat strong{
+    display:block;
+    font-size:27px;
+    margin-top:8px;
+}
+
+.tableCard{
+    margin-top:22px;
+    padding:0;
     overflow:hidden;
-    border-radius:32px;
-    padding:28px;
-    background:
-        radial-gradient(circle at 90% 15%,rgba(255,255,255,.65),transparent 25%),
-        linear-gradient(135deg,#ffedf3,#f1ebff);
-    box-shadow:0 20px 55px rgba(80,55,100,.10);
-    margin-bottom:18px;
 }
 
-.heroTop{
+.tableTop{
+    padding:19px;
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    align-items:center;
+    gap:15px;
+    border-bottom:1px solid #202b3e;
+}
+
+.tableTop h2{
+    font-size:17px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+.secondary{
+    background:#172235;
+    border:1px solid #29364c;
+}
+
+.tableWrap{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+}
+
+th,td{
+    padding:14px 16px;
+    text-align:left;
+    border-bottom:1px solid #1d2839;
+    font-size:13px;
+}
+
+th{
+    color:#77869e;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    background:#0b111c;
+}
+
+td{
+    color:#dbe3f1;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    background:rgba(255,255,255,.7);
-    padding:8px 12px;
-    border-radius:30px;
+    padding:6px 9px;
+    border-radius:8px;
     font-size:11px;
-    font-weight:800;
+    font-weight:700;
 }
 
-.hero h2{
-    font-size:36px;
-    line-height:1.1;
-    margin:18px 0 8px;
-    letter-spacing:-1.2px;
+.ok{
+    background:rgba(0,211,145,.12);
+    color:#35e6ad;
 }
 
-.heroDescription{
-    color:#756a78;
-    max-width:600px;
-    line-height:1.55;
-    font-size:14px;
+.redirect{
+    background:rgba(255,190,70,.12);
+    color:#ffc45c;
 }
 
-.babyVisual{
-    position:absolute;
-    right:35px;
-    bottom:15px;
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:90px;
-    background:rgba(255,255,255,.38);
+.error{
+    background:rgba(255,75,100,.12);
+    color:#ff7185;
 }
 
-@media(max-width:700px){
-    .babyVisual{
-        width:90px;
-        height:90px;
-        right:18px;
-        bottom:18px;
-        font-size:47px;
-    }
-
-    .hero{
-        padding:22px;
-    }
-
-    .hero h2{
-        font-size:29px;
-        max-width:75%;
-    }
-}
-
-/* WEEK CARD */
-
-.weekCard{
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    gap:18px;
-    margin-bottom:18px;
-}
-
-.card{
-    background:var(--card);
-    backdrop-filter:blur(20px);
-    border:1px solid var(--border);
-    border-radius:26px;
-    padding:23px;
-    box-shadow:0 15px 40px rgba(70,40,70,.07);
-}
-
-.bigWeek{
-    font-size:50px;
-    font-weight:900;
-    letter-spacing:-2px;
-}
-
-.bigWeek span{
-    font-size:20px;
-    letter-spacing:0;
-}
-
-.smallInfo{
-    margin-top:5px;
-    color:var(--muted);
-    font-size:13px;
+.pending{
+    background:rgba(100,130,180,.12);
+    color:#9eacc2;
 }
 
 .progressBox{
-    margin-top:20px;
+    margin-top:22px;
+    display:none;
 }
 
-.progressTitle{
+.progressInfo{
     display:flex;
     justify-content:space-between;
+    color:#8995aa;
     font-size:12px;
-    font-weight:700;
-    margin-bottom:8px;
+    margin-bottom:9px;
 }
 
 .progress{
-    width:100%;
-    height:11px;
-    background:#eee9ef;
+    height:9px;
+    background:#111a28;
     border-radius:20px;
     overflow:hidden;
 }
 
 .progressBar{
     height:100%;
-    border-radius:20px;
-    background:linear-gradient(90deg,#ff7193,#a47cff);
-    transition:width .5s;
+    width:0%;
+    background:linear-gradient(90deg,#00d991,#377cff);
+    transition:.25s;
 }
 
-/* SIZE */
-
-.sizeTitle{
-    font-size:13px;
-    color:var(--muted);
-    font-weight:700;
+.empty{
+    padding:50px 20px;
+    text-align:center;
+    color:#66758d;
 }
 
-.sizeValue{
-    font-size:28px;
-    font-weight:900;
-    margin-top:7px;
-}
-
-.similar{
-    margin-top:7px;
-    font-size:15px;
-    font-weight:700;
-}
-
-.sizeEmoji{
-    font-size:55px;
-    margin-top:15px;
-}
-
-/* GRID */
-
-.infoGrid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.infoCard{
-    min-height:190px;
-}
-
-.cardIcon{
-    font-size:28px;
+.emptyIcon{
+    font-size:40px;
     margin-bottom:12px;
 }
 
-.infoCard h3{
-    font-size:16px;
-    margin-bottom:9px;
+@media(max-width:900px){
+    .controls{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .start{width:100%}
 }
 
-.infoCard p{
-    color:#746a77;
-    line-height:1.6;
-    font-size:13px;
-}
-
-/* DEVELOPMENT */
-
-.development{
-    margin-top:18px;
-}
-
-.sectionTitle{
-    font-size:19px;
-    font-weight:900;
-    margin-bottom:13px;
-}
-
-.developmentList{
-    display:grid;
-    gap:10px;
-}
-
-.devItem{
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
-    background:rgba(255,255,255,.65);
-    border:1px solid rgba(255,255,255,.8);
-    border-radius:17px;
-    padding:14px;
-}
-
-.check{
-    min-width:29px;
-    height:29px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#fff0f4;
-}
-
-.devItem strong{
-    display:block;
-    font-size:13px;
-    margin-bottom:3px;
-}
-
-.devItem span{
-    font-size:12px;
-    color:var(--muted);
-    line-height:1.45;
-}
-
-/* DATES */
-
-.dateGrid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:18px;
-}
-
-.dateBox{
-    padding:16px;
-    border-radius:18px;
-    background:rgba(255,255,255,.7);
-}
-
-.dateBox small{
-    display:block;
-    color:var(--muted);
-    font-size:11px;
-    margin-bottom:5px;
-}
-
-.dateBox strong{
-    font-size:14px;
-}
-
-/* FOOTER */
-
-.footer{
-    text-align:center;
-    margin-top:25px;
-    color:#968b98;
-    font-size:11px;
-    line-height:1.5;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-    .formGrid,
-    .weekCard,
-    .infoGrid{
-        grid-template-columns:1fr;
-    }
-
-    .dateGrid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:480px){
-    .container{
-        width:92%;
-    }
-
-    .header{
-        margin-top:5px;
-    }
-
-    .setup,
-    .card{
-        padding:19px;
-    }
-
-    .bigWeek{
-        font-size:43px;
-    }
-
-    .dateGrid{
-        grid-template-columns:1fr;
-    }
+@media(max-width:600px){
+    .header{align-items:flex-start;flex-direction:column}
+    .controls{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .tableTop{align-items:flex-start;flex-direction:column}
+    .actions{width:100%}
+    .actions button{flex:1}
 }
 </style>
 </head>
@@ -491,616 +308,531 @@ input:focus{
 
 <div class="container">
 
-<header class="header">
-    <div class="logo">
-        <div class="logoIcon">👶</div>
-        <div>
-            <h1>Minik Mucizem</h1>
-            <span>Gebelik gelişim takip uygulaması</span>
-        </div>
-    </div>
-</header>
-
-<!-- AYARLAR -->
-
-<section class="setup">
-
-    <div class="setupHeader">
-        <div class="emoji">✨</div>
-        <div>
-            <h2>Gebelik başlangıcını belirle</h2>
-            <p>Son adet tarihi yerine başlangıç bilgilerini kendin girebilirsin.</p>
-        </div>
-    </div>
-
-    <div class="formGrid">
-
-        <div class="field">
-            <label>Başlangıç Tarihi</label>
-            <input type="date" id="startDate">
-        </div>
-
-        <div class="field">
-            <label>O gün kaçıncı haftadaydı?</label>
-            <input type="number" id="startWeek" min="0" max="42" placeholder="Örn. 12">
-        </div>
-
-        <div class="field">
-            <label>O gün kaçıncı gündü?</label>
-            <input type="number" id="startDay" min="0" max="6" placeholder="Örn. 3">
-        </div>
-
-    </div>
-
-    <button class="saveBtn" onclick="saveSettings()">
-        💗 Bilgileri Kaydet
-    </button>
-
-</section>
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="heroTop">
-        <div>
-            <div class="badge">🌸 BUGÜNÜN GELİŞİMİ</div>
-
-            <h2 id="heroTitle">Bebeğin büyüyor!</h2>
-
-            <p class="heroDescription" id="heroDescription">
-                Bilgileri girdikten sonra bebeğinin güncel gelişimini burada görebileceksin.
-            </p>
-        </div>
-    </div>
-
-    <div class="babyVisual" id="babyVisual">👶</div>
-
-</section>
-
-<!-- HAFTA -->
-
-<section class="weekCard">
-
-    <div class="card">
-
-        <div class="bigWeek">
-            <span id="weekNumber">--</span>
-            <span>hafta</span>
-            <span id="dayNumber">--</span>
-            <span>gün</span>
-        </div>
-
-        <div class="smallInfo" id="weekInfo">
-            Gebelik haftası hesaplanıyor...
-        </div>
-
-        <div class="progressBox">
-
-            <div class="progressTitle">
-                <span>Gebelik ilerlemesi</span>
-                <span id="progressText">%0</span>
+    <header class="header">
+        <div class="logo">
+            <div class="logoIcon">⌁</div>
+            <div>
+                <h1>Web Erişilebilirlik Tarayıcısı</h1>
+                <p>Alan adı ve bağlantı durumlarını analiz et</p>
             </div>
+        </div>
 
-            <div class="progress">
-                <div class="progressBar" id="progressBar"></div>
+        <div class="status">
+            <span class="dot"></span>
+            Sistem hazır
+        </div>
+    </header>
+
+    <section class="controls">
+
+        <div class="card">
+            <label>TARAMA DERİNLİĞİ</label>
+            <select id="depth">
+                <option value="1">1 — Sadece ana adres</option>
+                <option value="2" selected>2 — Alt bağlantılar</option>
+                <option value="3">3 — Geniş tarama</option>
+            </select>
+        </div>
+
+        <div class="card">
+            <label>MAKSİMUM URL</label>
+            <select id="limit">
+                <option value="25">25 URL</option>
+                <option value="50" selected>50 URL</option>
+                <option value="100">100 URL</option>
+                <option value="250">250 URL</option>
+            </select>
+        </div>
+
+        <div class="card">
+            <label>FİLTRE</label>
+            <select id="filter">
+                <option value="all">Tüm sonuçlar</option>
+                <option value="ok">Başarılı</option>
+                <option value="redirect">Yönlendirme</option>
+                <option value="error">Hatalı</option>
+            </select>
+        </div>
+
+        <button class="start" id="startBtn" onclick="startScan()">
+            ▶ Taramayı Başlat
+        </button>
+
+    </section>
+
+    <section class="progressBox" id="progressBox">
+        <div class="progressInfo">
+            <span id="progressText">Hazırlanıyor...</span>
+            <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress">
+            <div class="progressBar" id="progressBar"></div>
+        </div>
+    </section>
+
+    <section class="stats">
+
+        <div class="stat">
+            <small>Toplam</small>
+            <strong id="total">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Başarılı</small>
+            <strong id="success">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Yönlendirme</small>
+            <strong id="redirects">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Hatalı</small>
+            <strong id="errors">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Ortalama süre</small>
+            <strong id="avg">0 ms</strong>
+        </div>
+
+    </section>
+
+    <section class="card tableCard">
+
+        <div class="tableTop">
+            <h2>Tarama Sonuçları</h2>
+
+            <div class="actions">
+                <button class="secondary" onclick="downloadCSV()">
+                    CSV
+                </button>
+
+                <button class="secondary" onclick="downloadExcel()">
+                    Excel
+                </button>
+
+                <button class="secondary" onclick="clearResults()">
+                    Temizle
+                </button>
             </div>
+        </div>
+
+        <div class="tableWrap">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Durum</th>
+                        <th>HTTP</th>
+                        <th>Yanıt</th>
+                        <th>Zaman</th>
+                    </tr>
+                </thead>
+
+                <tbody id="results">
+                    <tr>
+                        <td colspan="6">
+                            <div class="empty">
+                                <div class="emptyIcon">⌕</div>
+                                Taramayı başlatmak için yukarıdaki butona basın.
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
 
         </div>
 
-    </div>
-
-    <div class="card">
-
-        <div class="sizeTitle">Bugün yaklaşık boyutu</div>
-
-        <div class="sizeValue" id="sizeValue">—</div>
-
-        <div class="similar" id="similar">
-            Bilgi girildiğinde gösterilecek
-        </div>
-
-        <div class="sizeEmoji" id="sizeEmoji">🌱</div>
-
-    </div>
-
-</section>
-
-<!-- INFO -->
-
-<section class="infoGrid">
-
-    <div class="card infoCard">
-        <div class="cardIcon">🧠</div>
-        <h3>Bu hafta neler oluyor?</h3>
-        <p id="developmentText">
-            Gebelik bilgilerini girdikten sonra bu haftaya özel gelişim bilgileri burada görünecek.
-        </p>
-    </div>
-
-    <div class="card infoCard">
-        <div class="cardIcon">❤️</div>
-        <h3>Bebeğinde gelişenler</h3>
-        <p id="bodyText">
-            Bebeğin gelişimindeki önemli değişiklikler burada gösterilecek.
-        </p>
-    </div>
-
-    <div class="card infoCard">
-        <div class="cardIcon">🌙</div>
-        <h3>Bu dönemde</h3>
-        <p id="periodText">
-            Gebeliğin bulunduğu döneme ait bilgiler burada gösterilecek.
-        </p>
-    </div>
-
-</section>
-
-<!-- DEVELOPMENT -->
-
-<section class="card development">
-
-    <div class="sectionTitle">
-        ✨ Bu haftanın gelişim özellikleri
-    </div>
-
-    <div class="developmentList" id="developmentList"></div>
-
-</section>
-
-<!-- DATES -->
-
-<section class="card development">
-
-    <div class="sectionTitle">
-        📅 Gebelik takvimi
-    </div>
-
-    <div class="dateGrid">
-
-        <div class="dateBox">
-            <small>Başlangıç tarihi</small>
-            <strong id="dateStart">—</strong>
-        </div>
-
-        <div class="dateBox">
-            <small>Tahmini 40. hafta</small>
-            <strong id="date40">—</strong>
-        </div>
-
-        <div class="dateBox">
-            <small>Bugün</small>
-            <strong id="dateToday">—</strong>
-        </div>
-
-    </div>
-
-</section>
-
-<div class="footer">
-    Bu uygulamadaki gelişim bilgileri yaklaşık değerlerdir.
-    Tıbbi değerlendirme veya doktor önerisi yerine geçmez.
-</div>
+    </section>
 
 </div>
 
 <script>
 
-const pregnancyData = {
+let results = [];
+let scanning = false;
 
-4: {
-    size:"Haşhaş tohumu",
-    emoji:"🌱",
-    description:"Bebeğin henüz çok küçük olsa da gelişiminin temelleri hızla atılıyor.",
-    development:"Embriyo gelişiminin erken dönemindedir. Hücreler hızla çoğalmaya ve farklılaşmaya başlar.",
-    body:"Gebeliğin temel yapılarının oluşumu başlar.",
-    period:"Gebeliğin çok erken dönemi.",
-    items:[
-        ["🧬","Hücre gelişimi","Hücreler hızla çoğalmaya başlıyor."],
-        ["🌱","İlk gelişim","Embriyonun temel yapıları oluşmaya başlıyor."],
-        ["❤️","Kalp gelişimi","Kalp ve dolaşım sisteminin temelleri oluşuyor."]
-    ]
-},
+/*
+    Demo veri kaynağı.
+    Gerçek otomatik internet taraması için bu bölümün
+    backend API ile değiştirilmesi gerekir.
+*/
+const seedSites = [
+    "https://example.com",
+    "https://example.org",
+    "https://example.net",
+    "https://www.wikipedia.org",
+    "https://www.mozilla.org",
+    "https://www.python.org",
+    "https://www.openstreetmap.org",
+    "https://www.gnu.org"
+];
 
-6: {
-    size:"Mercimek tanesi",
-    emoji:"🫘",
-    description:"Bebeğin küçük bir mercimek tanesi büyüklüğüne yaklaşıyor.",
-    development:"Bebeğin temel organ sistemlerinin oluşumu hızlanır.",
-    body:"Beyin, omurilik ve kalp gelişimi hızla devam eder.",
-    period:"İlk trimester.",
-    items:[
-        ["🧠","Beyin","Sinir sisteminin temel yapıları gelişiyor."],
-        ["❤️","Kalp","Kalp yapısı gelişimini sürdürüyor."],
-        ["👶","Vücut şekli","Baş ve gövde ayrımı belirginleşmeye başlıyor."]
-    ]
-},
+async function startScan(){
 
-8: {
-    size:"Ahududu",
-    emoji:"🫐",
-    description:"Bebeğin artık belirgin bir embriyo şekline sahip olmaya başlıyor.",
-    development:"Kol ve bacakların başlangıçları belirginleşmeye başlar.",
-    body:"Yüz, gözler ve uzuvların temel yapıları gelişir.",
-    period:"İlk trimester.",
-    items:[
-        ["🦴","İskelet","İskelet sisteminin temelleri gelişiyor."],
-        ["👀","Gözler","Gözlerin temel yapıları oluşuyor."],
-        ["🖐️","Uzuvlar","Kol ve bacak gelişimi ilerliyor."]
-    ]
-},
+    if(scanning) return;
 
-10: {
-    size:"Çilek",
-    emoji:"🍓",
-    description:"Bebeğin küçük bir çilek boyutlarına yaklaşmış durumda.",
-    development:"Organların temel oluşumu büyük ölçüde devam ederken büyüme hızlanır.",
-    body:"Parmaklar, yüz hatları ve hareket sisteminin gelişimi sürer.",
-    period:"İlk trimester.",
-    items:[
-        ["🖐️","Parmaklar","Parmakların şekillenmesi belirginleşiyor."],
-        ["👃","Yüz","Yüz hatlarının temel yapıları gelişiyor."],
-        ["💓","Kalp","Kalp ve dolaşım sistemi çalışmaya devam ediyor."]
-    ]
-},
+    scanning = true;
+    results = [];
 
-12: {
-    size:"Limon",
-    emoji:"🍋",
-    description:"Bebeğin artık küçük bir limon büyüklüğüne yaklaşıyor.",
-    development:"Bebeğin vücut oranları değişmeye ve yüz hatları daha belirgin hale gelmeye başlar.",
-    body:"Parmaklar ayrılmıştır ve hareketler gelişmeye devam eder.",
-    period:"İlk trimesterin sonlarına doğru.",
-    items:[
-        ["👶","Yüz hatları","Yüz daha belirgin bir şekil almaya başlıyor."],
-        ["🦵","Hareket","Bebeğin hareketleri gelişmeye devam ediyor."],
-        ["🖐️","Eller","El ve parmak yapıları belirginleşiyor."]
-    ]
-},
+    document.getElementById("startBtn").style.display = "none";
+    document.getElementById("progressBox").style.display = "block";
 
-14: {
-    size:"Şeftali",
-    emoji:"🍑",
-    description:"Bebeğin ikinci trimester dönemine doğru hızla büyüyor.",
-    development:"Vücut büyümeye devam eder ve yüz kasları gelişmeye başlar.",
-    body:"Bebeğin hareketleri artarken dış görünüşü giderek daha belirgin hale gelir.",
-    period:"İkinci trimester.",
-    items:[
-        ["👂","Kulaklar","Kulak yapıları gelişimini sürdürüyor."],
-        ["🦴","Kemikler","Kemikleşme süreci ilerliyor."],
-        ["🤰","Hareket","Bebeğin hareketleri giderek artıyor."]
-    ]
-},
+    const limit =
+        Number(document.getElementById("limit").value);
 
-16: {
-    size:"Avokado",
-    emoji:"🥑",
-    description:"Bebeğin yaklaşık bir avokado büyüklüğüne yaklaşmış olabilir.",
-    development:"Kaslar ve iskelet sistemi gelişmeye devam eder.",
-    body:"Bebeğin hareketleri daha koordineli hale gelmeye başlar.",
-    period:"İkinci trimester.",
-    items:[
-        ["💪","Kaslar","Kas gelişimi hızlanıyor."],
-        ["🦴","Kemikler","İskelet sistemi güçleniyor."],
-        ["👶","Yüz","Yüz hatları daha belirgin."]
-    ]
-},
+    const targets = seedSites.slice(0, limit);
 
-18: {
-    size:"Tatlı patates",
-    emoji:"🍠",
-    description:"Bebeğin hızla büyüyor ve vücudunun oranları değişiyor.",
-    development:"İşitme ve sinir sistemi gelişimi ilerlemeye devam eder.",
-    body:"Bebeğin sesleri algılama sistemi gelişmektedir.",
-    period:"İkinci trimester.",
-    items:[
-        ["👂","İşitme","İşitme sistemi gelişmeye devam ediyor."],
-        ["🧠","Sinir sistemi","Sinir bağlantıları hızla gelişiyor."],
-        ["🦶","Hareket","Hareketler daha koordineli hale geliyor."]
-    ]
-},
+    for(let i=0;i<targets.length;i++){
 
-20: {
-    size:"Muz",
-    emoji:"🍌",
-    description:"Gebeliğin yaklaşık yarısına geldin! Bebeğin artık çok daha belirgin.",
-    development:"Bebeğin büyümesi hızlanır ve hareketleri daha fazla hissedilebilir hale gelebilir.",
-    body:"Saç ve tırnakların gelişimi devam eder.",
-    period:"İkinci trimesterin ortası.",
-    items:[
-        ["🧠","Beyin","Beyin gelişimi hızla devam ediyor."],
-        ["👂","Sesler","Dış seslere karşı duyarlılık gelişmeye devam ediyor."],
-        ["🦶","Tekmeler","Hareketler daha belirgin olabilir."]
-    ]
-},
+        const url = targets[i];
 
-24: {
-    size:"Kavun",
-    emoji:"🍈",
-    description:"Bebeğin artık daha dolgun bir vücut görünümüne doğru ilerliyor.",
-    development:"Akciğerler ve sinir sistemi gelişmeye devam eder.",
-    body:"Bebeğin hareketleri daha güçlü hissedilebilir.",
-    period:"İkinci trimesterin sonları.",
-    items:[
-        ["🫁","Akciğerler","Akciğer gelişimi devam ediyor."],
-        ["🧠","Beyin","Sinir sistemi gelişimi hızlanıyor."],
-        ["👂","İşitme","Sesleri algılama sistemi gelişiyor."]
-    ]
-},
+        document.getElementById("progressText").textContent =
+            "Kontrol ediliyor: " + url;
 
-28: {
-    size:"Patlıcan",
-    emoji:"🍆",
-    description:"Üçüncü trimester başladı. Bebeğin artık hızla kilo almaya hazırlanıyor.",
-    development:"Beyin gelişimi ve akciğer olgunlaşması devam eder.",
-    body:"Bebeğin uyku ve uyanıklık dönemleri daha belirginleşebilir.",
-    period:"Üçüncü trimester.",
-    items:[
-        ["🧠","Beyin","Beyin gelişimi hızla devam ediyor."],
-        ["🫁","Akciğer","Akciğerler olgunlaşmaya devam ediyor."],
-        ["👁️","Gözler","Gözler açılıp kapanabilir."]
-    ]
-},
+        const percent =
+            Math.round(((i+1)/targets.length)*100);
 
-32: {
-    size:"Hindistan cevizi",
-    emoji:"🥥",
-    description:"Bebeğin artık doğuma doğru hızla büyüyor ve kilo alıyor.",
-    development:"Bebeğin yağ dokusu artar ve organları olgunlaşmaya devam eder.",
-    body:"Hareketler güçlü olabilir ancak rahimdeki alan giderek azalır.",
-    period:"Üçüncü trimester.",
-    items:[
-        ["🧈","Yağ dokusu","Bebeğin yağ depoları artıyor."],
-        ["🫁","Akciğer","Akciğer gelişimi devam ediyor."],
-        ["🧠","Beyin","Beyin gelişimi yoğun şekilde sürüyor."]
-    ]
-},
+        document.getElementById("progressBar").style.width =
+            percent + "%";
 
-36: {
-    size:"Papaya",
-    emoji:"🥭",
-    description:"Bebeğin doğuma çok daha yakın. Organları olgunlaşmaya devam ediyor.",
-    development:"Bebeğin çoğu organı doğum için hazırlanmaktadır.",
-    body:"Bebeğin baş aşağı pozisyona gelmesi mümkün olabilir.",
-    period:"Doğuma hazırlık dönemi.",
-    items:[
-        ["🫁","Akciğerler","Akciğerlerin olgunlaşması sürüyor."],
-        ["🧠","Beyin","Beyin gelişimi devam ediyor."],
-        ["👶","Pozisyon","Bebek doğum pozisyonuna yaklaşabilir."]
-    ]
-},
+        document.getElementById("progressPercent").textContent =
+            percent + "%";
 
-38: {
-    size:"Karpuz",
-    emoji:"🍉",
-    description:"Bebeğin artık doğuma çok yakın. Büyük buluşmaya az kaldı.",
-    development:"Bebek doğuma hazırlanırken kilo almaya ve organlarını olgunlaştırmaya devam eder.",
-    body:"Bebeğin doğum için son hazırlıkları devam ediyor.",
-    period:"Doğuma çok yakın dönem.",
-    items:[
-        ["❤️","Kalp","Dolaşım sistemi çalışmaya devam ediyor."],
-        ["🫁","Akciğer","Akciğer gelişimi devam ediyor."],
-        ["👶","Hazırlık","Bebek doğuma hazırlanıyor."]
-    ]
-},
+        await checkUrl(url);
 
-40: {
-    size:"Bebek",
-    emoji:"👶",
-    description:"Yaklaşık 40. haftaya ulaşıldı. Bebeğin doğuma hazır kabul edildiği dönemdir.",
-    development:"Gebelik yaklaşık 40. haftaya ulaşmıştır.",
-    body:"Bebeğin gelişimi ve doğuma hazırlığı tamamlanma aşamasındadır.",
-    period:"Tahmini doğum dönemi.",
-    items:[
-        ["👶","Buluşma zamanı","Bebek doğuma hazırlanıyor."],
-        ["❤️","Kalp","Kalp ve dolaşım sistemi çalışıyor."],
-        ["🫁","Akciğer","Akciğerler doğum için hazırlanıyor."]
-    ]
+        updateStats();
+        renderTable();
+
+        await sleep(180);
+    }
+
+    document.getElementById("progressText").textContent =
+        "Tarama tamamlandı";
+
+    scanning = false;
+    document.getElementById("startBtn").style.display = "block";
 }
 
-};
+async function checkUrl(url){
 
-function formatDate(date){
+    const started = performance.now();
 
-    return date.toLocaleDateString("tr-TR",{
-        day:"2-digit",
-        month:"long",
-        year:"numeric"
-    });
+    /*
+       Tarayıcı CORS politikaları nedeniyle doğrudan
+       üçüncü taraf sitelerin HTTP durum kodlarını
+       güvenilir biçimde okuyamayabilir.
+    */
 
-}
+    let status = "Kontrol edilemedi";
+    let http = "-";
 
-function getWeekData(week){
+    try{
 
-    let nearest = 4;
+        const controller = new AbortController();
 
-    Object.keys(pregnancyData).forEach(key=>{
+        const timeout = setTimeout(
+            () => controller.abort(),
+            6000
+        );
 
-        const w=parseInt(key);
+        const response = await fetch(url,{
+            method:"HEAD",
+            mode:"cors",
+            signal:controller.signal
+        });
 
-        if(w<=week){
-            nearest=w;
+        clearTimeout(timeout);
+
+        http = response.status;
+
+        if(response.status >= 200 &&
+           response.status < 300){
+
+            status = "Başarılı";
+        }
+        else if(response.status >= 300 &&
+                response.status < 400){
+
+            status = "Yönlendirme";
+        }
+        else{
+
+            status = "Hatalı";
         }
 
+    }catch(e){
+
+        status = "Erişim kontrolü başarısız";
+        http = "-";
+    }
+
+    const elapsed =
+        Math.round(performance.now()-started);
+
+    results.push({
+        url,
+        status,
+        http,
+        time:elapsed
+    });
+}
+
+function renderTable(){
+
+    const tbody =
+        document.getElementById("results");
+
+    const filter =
+        document.getElementById("filter").value;
+
+    let data = results;
+
+    if(filter !== "all"){
+
+        if(filter === "ok"){
+            data = results.filter(x=>x.status==="Başarılı");
+        }
+
+        if(filter === "redirect"){
+            data = results.filter(x=>x.status==="Yönlendirme");
+        }
+
+        if(filter === "error"){
+            data = results.filter(x=>
+                x.status==="Hatalı" ||
+                x.status==="Erişim kontrolü başarısız"
+            );
+        }
+    }
+
+    if(!data.length){
+
+        tbody.innerHTML = `
+        <tr>
+            <td colspan="6">
+                <div class="empty">
+                    Sonuç bulunamadı.
+                </div>
+            </td>
+        </tr>`;
+
+        return;
+    }
+
+    tbody.innerHTML = data.map((item,index)=>{
+
+        let cls = "pending";
+
+        if(item.status==="Başarılı")
+            cls="ok";
+
+        else if(item.status==="Yönlendirme")
+            cls="redirect";
+
+        else if(
+            item.status==="Hatalı" ||
+            item.status==="Erişim kontrolü başarısız"
+        )
+            cls="error";
+
+        return `
+        <tr>
+            <td>${index+1}</td>
+
+            <td>
+                <strong>${escapeHtml(item.url)}</strong>
+            </td>
+
+            <td>
+                <span class="badge ${cls}">
+                    ${escapeHtml(item.status)}
+                </span>
+            </td>
+
+            <td>${item.http}</td>
+
+            <td>${item.time} ms</td>
+
+            <td>${new Date().toLocaleTimeString("tr-TR")}</td>
+        </tr>`;
+
+    }).join("");
+}
+
+function updateStats(){
+
+    const total = results.length;
+
+    const success =
+        results.filter(x=>x.status==="Başarılı").length;
+
+    const redirects =
+        results.filter(x=>x.status==="Yönlendirme").length;
+
+    const errors =
+        results.filter(x=>
+            x.status==="Hatalı" ||
+            x.status==="Erişim kontrolü başarısız"
+        ).length;
+
+    const avg =
+        total
+        ? Math.round(
+            results.reduce((a,b)=>a+b.time,0)/total
+          )
+        : 0;
+
+    document.getElementById("total").textContent = total;
+    document.getElementById("success").textContent = success;
+    document.getElementById("redirects").textContent = redirects;
+    document.getElementById("errors").textContent = errors;
+    document.getElementById("avg").textContent = avg + " ms";
+}
+
+function downloadCSV(){
+
+    if(!results.length){
+        alert("Önce tarama yapın.");
+        return;
+    }
+
+    const rows = [
+        ["URL","Durum","HTTP","Yanıt Süresi (ms)"],
+        ...results.map(x=>[
+            x.url,
+            x.status,
+            x.http,
+            x.time
+        ])
+    ];
+
+    const csv =
+        "\uFEFF" +
+        rows.map(row =>
+            row.map(value =>
+                `"${String(value).replaceAll('"','""')}"`
+            ).join(";")
+        ).join("\n");
+
+    const blob =
+        new Blob([csv],{
+            type:"text/csv;charset=utf-8;"
+        });
+
+    const a=document.createElement("a");
+
+    a.href=URL.createObjectURL(blob);
+    a.download =
+        "web_tarama_" +
+        new Date().toISOString().slice(0,10) +
+        ".csv";
+
+    a.click();
+}
+
+function downloadExcel(){
+
+    if(!results.length){
+        alert("Önce tarama yapın.");
+        return;
+    }
+
+    /*
+       Excel'in doğrudan açabildiği HTML tablo formatı.
+       .xls olarak kaydedilir.
+    */
+
+    let html = `
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    </head>
+    <body>
+    <table border="1">
+    <tr>
+        <th>URL</th>
+        <th>Durum</th>
+        <th>HTTP</th>
+        <th>Yanıt Süresi (ms)</th>
+    </tr>`;
+
+    results.forEach(x=>{
+
+        html += `
+        <tr>
+            <td>${escapeHtml(x.url)}</td>
+            <td>${escapeHtml(x.status)}</td>
+            <td>${x.http}</td>
+            <td>${x.time}</td>
+        </tr>`;
     });
 
-    return pregnancyData[nearest];
+    html += `
+    </table>
+    </body>
+    </html>`;
 
+    const blob =
+        new Blob(
+            ["\uFEFF",html],
+            {type:"application/vnd.ms-excel"}
+        );
+
+    const a=document.createElement("a");
+
+    a.href=URL.createObjectURL(blob);
+    a.download =
+        "web_tarama_" +
+        new Date().toISOString().slice(0,10) +
+        ".xls";
+
+    a.click();
 }
 
-function saveSettings(){
+function clearResults(){
 
-    const startDate=document.getElementById("startDate").value;
-    const startWeek=parseInt(document.getElementById("startWeek").value);
-    const startDay=parseInt(document.getElementById("startDay").value);
+    results=[];
 
-    if(!startDate || isNaN(startWeek) || isNaN(startDay)){
-
-        alert("Lütfen başlangıç tarihi, hafta ve gün bilgisini gir.");
-
-        return;
-
-    }
-
-    if(startWeek<0 || startWeek>42){
-
-        alert("Hafta 0 ile 42 arasında olmalıdır.");
-
-        return;
-
-    }
-
-    if(startDay<0 || startDay>6){
-
-        alert("Gün 0 ile 6 arasında olmalıdır.");
-
-        return;
-
-    }
-
-    localStorage.setItem("pregnancyStartDate",startDate);
-    localStorage.setItem("pregnancyStartWeek",startWeek);
-    localStorage.setItem("pregnancyStartDay",startDay);
-
-    update();
-
-    alert("Bilgiler kaydedildi 💗");
-
-}
-
-function update(){
-
-    const savedDate=localStorage.getItem("pregnancyStartDate");
-    const savedWeek=localStorage.getItem("pregnancyStartWeek");
-    const savedDay=localStorage.getItem("pregnancyStartDay");
-
-    if(!savedDate || savedWeek===null || savedDay===null){
-
-        return;
-
-    }
-
-    document.getElementById("startDate").value=savedDate;
-    document.getElementById("startWeek").value=savedWeek;
-    document.getElementById("startDay").value=savedDay;
-
-    const start=new Date(savedDate+"T00:00:00");
-
-    const today=new Date();
-
-    today.setHours(0,0,0,0);
-
-    const difference=Math.floor(
-        (today-start)/(1000*60*60*24)
-    );
-
-    let totalDays=
-        (parseInt(savedWeek)*7)
-        +parseInt(savedDay)
-        +difference;
-
-    if(totalDays<0){
-
-        totalDays=0;
-
-    }
-
-    const week=Math.floor(totalDays/7);
-    const day=totalDays%7;
-
-    const data=getWeekData(week);
-
-    document.getElementById("weekNumber").textContent=week;
-    document.getElementById("dayNumber").textContent=day;
-
-    document.getElementById("weekInfo").textContent=
-        `${week}. hafta ${day}. gün • Gebelik yaşı otomatik güncelleniyor`;
-
-    const progress=Math.min((totalDays/280)*100,100);
-
-    document.getElementById("progressBar").style.width=
-        progress+"%";
-
-    document.getElementById("progressText").textContent=
-        "%"+Math.round(progress);
-
-    document.getElementById("heroTitle").textContent=
-        `${week}. haftada minik mucizen 💗`;
-
-    document.getElementById("heroDescription").textContent=
-        data.description;
-
-    document.getElementById("babyVisual").textContent=
-        data.emoji;
-
-    document.getElementById("sizeValue").textContent=
-        data.size;
-
-    document.getElementById("similar").textContent=
-        `Yaklaşık olarak ${data.size.toLowerCase()} büyüklüğünde`;
-
-    document.getElementById("sizeEmoji").textContent=
-        data.emoji;
-
-    document.getElementById("developmentText").textContent=
-        data.development;
-
-    document.getElementById("bodyText").textContent=
-        data.body;
-
-    document.getElementById("periodText").textContent=
-        data.period;
-
-    const list=document.getElementById("developmentList");
-
-    list.innerHTML="";
-
-    data.items.forEach(item=>{
-
-        const div=document.createElement("div");
-
-        div.className="devItem";
-
-        div.innerHTML=`
-            <div class="check">${item[0]}</div>
-            <div>
-                <strong>${item[1]}</strong>
-                <span>${item[2]}</span>
+    document.getElementById("results").innerHTML=`
+    <tr>
+        <td colspan="6">
+            <div class="empty">
+                <div class="emptyIcon">⌕</div>
+                Taramayı başlatmak için yukarıdaki butona basın.
             </div>
-        `;
+        </td>
+    </tr>`;
 
-        list.appendChild(div);
+    updateStats();
 
-    });
-
-    document.getElementById("dateStart").textContent=
-        formatDate(start);
-
-    const date40=new Date(start);
-
-    const startTotal=
-        parseInt(savedWeek)*7+
-        parseInt(savedDay);
-
-    date40.setDate(
-        date40.getDate()+(280-startTotal)
-    );
-
-    document.getElementById("date40").textContent=
-        formatDate(date40);
-
-    document.getElementById("dateToday").textContent=
-        formatDate(today);
-
+    document.getElementById("progressBar").style.width="0%";
+    document.getElementById("progressPercent").textContent="0%";
+    document.getElementById("progressText").textContent="Hazırlanıyor...";
 }
 
-window.addEventListener("load",()=>{
+document.getElementById("filter")
+.addEventListener("change",renderTable);
 
-    update();
+function sleep(ms){
+    return new Promise(resolve=>setTimeout(resolve,ms));
+}
 
-});
+function escapeHtml(value){
 
-setInterval(update,60*1000);
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
 
 </script>
 
